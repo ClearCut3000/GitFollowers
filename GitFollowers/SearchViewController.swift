@@ -9,6 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+  //MARK: - Properties
+  var isUsernameEntered: Bool { return !userNameTextFielf.text!.isEmpty }
+
   //MARK: - Subview's
   let logoImageView = UIImageView()
   let userNameTextFielf = GFTextField()
@@ -21,6 +24,7 @@ class SearchViewController: UIViewController {
     configureLogoViewView()
     configureTextField()
     configureCallToActionButton()
+    createDismissKeyboardTapGesture()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +33,14 @@ class SearchViewController: UIViewController {
   }
 
   //MARK: - Methods
+  @objc func pushFolloverListViewController() {
+    guard isUsernameEntered else { return }
+    let followerListVC = FollowerListViewController()
+    followerListVC.username = userNameTextFielf.text
+    followerListVC.title = userNameTextFielf.text
+    navigationController?.pushViewController(followerListVC, animated: true)
+  }
+
   func configureLogoViewView() {
     view.addSubview(logoImageView)
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +55,7 @@ class SearchViewController: UIViewController {
 
   func configureTextField() {
     view.addSubview(userNameTextFielf)
+    userNameTextFielf.delegate = self
     NSLayoutConstraint.activate([
       userNameTextFielf.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
       userNameTextFielf.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -53,6 +66,7 @@ class SearchViewController: UIViewController {
 
   func configureCallToActionButton() {
     view.addSubview(callToAtionButton)
+    callToAtionButton.addTarget(self, action: #selector(pushFolloverListViewController), for: .touchUpInside)
     NSLayoutConstraint.activate([
       callToAtionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
       callToAtionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -61,4 +75,17 @@ class SearchViewController: UIViewController {
     ])
   }
 
+  func createDismissKeyboardTapGesture() {
+    let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+    view.addGestureRecognizer(tap)
+  }
+
+}
+
+//MARK: - TextFieldDelegate Protocol Extension
+extension SearchViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    pushFolloverListViewController()
+    return true
+  }
 }

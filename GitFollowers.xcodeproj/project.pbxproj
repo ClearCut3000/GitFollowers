@@ -15,6 +15,10 @@
 		3664135028809FC80059C347 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664134F28809FC80059C347 /* FavoritesListViewController.swift */; };
 		366413522880AB0A0059C347 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366413512880AB0A0059C347 /* GFButton.swift */; };
 		366413542881AD840059C347 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366413532881AD840059C347 /* GFTextField.swift */; };
+		36641356288214B20059C347 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641355288214B20059C347 /* FollowerListViewController.swift */; };
+		3664135828836A770059C347 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664135728836A770059C347 /* GFTitleLabel.swift */; };
+		3664135A28836BF60059C347 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664135928836BF60059C347 /* GFBodyLabel.swift */; };
+		3664135C28836D9F0059C347 /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664135B28836D9F0059C347 /* GFAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		3664134F28809FC80059C347 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		366413512880AB0A0059C347 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		366413532881AD840059C347 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		36641355288214B20059C347 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
+		3664135728836A770059C347 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
+		3664135928836BF60059C347 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
+		3664135B28836D9F0059C347 /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,10 @@
 				3664134F28809FC80059C347 /* FavoritesListViewController.swift */,
 				366413512880AB0A0059C347 /* GFButton.swift */,
 				366413532881AD840059C347 /* GFTextField.swift */,
+				36641355288214B20059C347 /* FollowerListViewController.swift */,
+				3664135728836A770059C347 /* GFTitleLabel.swift */,
+				3664135928836BF60059C347 /* GFBodyLabel.swift */,
+				3664135B28836D9F0059C347 /* GFAlertViewController.swift */,
 			);
 			path = GitFollowers;
 			sourceTree = "<group>";
@@ -143,9 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3664135C28836D9F0059C347 /* GFAlertViewController.swift in Sources */,
 				3664135028809FC80059C347 /* FavoritesListViewController.swift in Sources */,
 				366413522880AB0A0059C347 /* GFButton.swift in Sources */,
 				3664133A287F576A0059C347 /* AppDelegate.swift in Sources */,
+				36641356288214B20059C347 /* FollowerListViewController.swift in Sources */,
+				3664135A28836BF60059C347 /* GFBodyLabel.swift in Sources */,
+				3664135828836A770059C347 /* GFTitleLabel.swift in Sources */,
 				3664134E28809F890059C347 /* SearchViewController.swift in Sources */,
 				3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */,
 				366413542881AD840059C347 /* GFTextField.swift in Sources */,
