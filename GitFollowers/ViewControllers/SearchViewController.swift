@@ -29,12 +29,15 @@ class SearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.isNavigationBarHidden = true
+    navigationController?.setNavigationBarHidden(true, animated: true)
   }
 
   //MARK: - Methods
   @objc func pushFolloverListViewController() {
-    guard isUsernameEntered else { return }
+    guard isUsernameEntered else {
+      presentGFAlertOnMailThread(title: "Empty Username!", message: "Please enter a username. We need to know who to look for.", buttonTitle: "OK")
+      return
+    }
     let followerListVC = FollowerListViewController()
     followerListVC.username = userNameTextFielf.text
     followerListVC.title = userNameTextFielf.text
@@ -74,7 +77,7 @@ class SearchViewController: UIViewController {
       callToAtionButton.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
-
+  
   func createDismissKeyboardTapGesture() {
     let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
     view.addGestureRecognizer(tap)
