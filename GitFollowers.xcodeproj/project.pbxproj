@@ -28,6 +28,7 @@
 		366413722886051B0059C347 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366413712886051B0059C347 /* GFAvatarImageView.swift */; };
 		366413742887552E0059C347 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366413732887552E0059C347 /* UIHelper.swift */; };
 		3664137C288977B60059C347 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664137B288977B60059C347 /* GFEmptyStateView.swift */; };
+		3664137E2889BD8D0059C347 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664137D2889BD8D0059C347 /* UserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		366413712886051B0059C347 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		366413732887552E0059C347 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		3664137B288977B60059C347 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		3664137D2889BD8D0059C347 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				3664134F28809FC80059C347 /* FavoritesListViewController.swift */,
 				3664134D28809F890059C347 /* SearchViewController.swift */,
 				36641355288214B20059C347 /* FollowerListViewController.swift */,
+				3664137D2889BD8D0059C347 /* UserInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				3664135828836A770059C347 /* GFTitleLabel.swift in Sources */,
 				3664136A2884C48E0059C347 /* NetworkManager.swift in Sources */,
 				3664134E28809F890059C347 /* SearchViewController.swift in Sources */,
+				3664137E2889BD8D0059C347 /* UserInfoViewController.swift in Sources */,
 				3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */,
 				366413542881AD840059C347 /* GFTextField.swift in Sources */,
 			);
