@@ -60,6 +60,8 @@ class UserInfoViewController: UIViewController {
       case .success(let user):
         DispatchQueue.main.async {
           self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+          self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
+          self.add(childVC: GFFollowerItemViewController(user: user), to: self.itemViewTwo)
         }
       }
     }

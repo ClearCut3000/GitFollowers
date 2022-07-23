@@ -10,6 +10,8 @@
 		3619AC50288A046100592944 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC4F288A046100592944 /* Constants.swift */; };
 		3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC51288C8D9500592944 /* GFItemInfoView.swift */; };
 		3619AC54288C944E00592944 /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC53288C944E00592944 /* GFItemInfoViewController.swift */; };
+		3619AC56288C9A9F00592944 /* GFRepoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC55288C9A9F00592944 /* GFRepoItemViewController.swift */; };
+		3619AC58288CA03800592944 /* GFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC57288CA03800592944 /* GFFollowerItemViewController.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		3619AC4F288A046100592944 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3619AC51288C8D9500592944 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		3619AC53288C944E00592944 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
+		3619AC55288C9A9F00592944 /* GFRepoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemViewController.swift; sourceTree = "<group>"; };
+		3619AC57288CA03800592944 /* GFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemViewController.swift; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3619AC59288CA0B300592944 /* ItemInfoViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3619AC53288C944E00592944 /* GFItemInfoViewController.swift */,
+				3619AC55288C9A9F00592944 /* GFRepoItemViewController.swift */,
+				3619AC57288CA03800592944 /* GFFollowerItemViewController.swift */,
+			);
+			path = ItemInfoViewControllers;
+			sourceTree = "<group>";
+		};
 		3664132D287F576A0059C347 = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +242,7 @@
 			children = (
 				3664135B28836D9F0059C347 /* GFAlertViewController.swift */,
 				3664137F2889F97E0059C347 /* GFUserInfoHeaderViewController.swift */,
-				3619AC53288C944E00592944 /* GFItemInfoViewController.swift */,
+				3619AC59288CA0B300592944 /* ItemInfoViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -318,6 +332,8 @@
 				3664135E2884B6650059C347 /* UIViewController+Extension.swift in Sources */,
 				3664135028809FC80059C347 /* FavoritesListViewController.swift in Sources */,
 				366413522880AB0A0059C347 /* GFButton.swift in Sources */,
+				3619AC58288CA03800592944 /* GFFollowerItemViewController.swift in Sources */,
+				3619AC56288C9A9F00592944 /* GFRepoItemViewController.swift in Sources */,
 				3619AC50288A046100592944 /* Constants.swift in Sources */,
 				366413742887552E0059C347 /* UIHelper.swift in Sources */,
 				366413722886051B0059C347 /* GFAvatarImageView.swift in Sources */,
