@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3619AC50288A046100592944 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC4F288A046100592944 /* Constants.swift */; };
 		3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC51288C8D9500592944 /* GFItemInfoView.swift */; };
+		3619AC54288C944E00592944 /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC53288C944E00592944 /* GFItemInfoViewController.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		3619AC4F288A046100592944 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3619AC51288C8D9500592944 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		3619AC53288C944E00592944 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				3664135B28836D9F0059C347 /* GFAlertViewController.swift */,
 				3664137F2889F97E0059C347 /* GFUserInfoHeaderViewController.swift */,
+				3619AC53288C944E00592944 /* GFItemInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				3664135828836A770059C347 /* GFTitleLabel.swift in Sources */,
 				3664136A2884C48E0059C347 /* NetworkManager.swift in Sources */,
 				3664134E28809F890059C347 /* SearchViewController.swift in Sources */,
+				3619AC54288C944E00592944 /* GFItemInfoViewController.swift in Sources */,
 				3664137E2889BD8D0059C347 /* UserInfoViewController.swift in Sources */,
 				3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */,
 				366413542881AD840059C347 /* GFTextField.swift in Sources */,
