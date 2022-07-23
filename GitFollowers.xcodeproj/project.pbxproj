@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3619AC50288A046100592944 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC4F288A046100592944 /* Constants.swift */; };
+		3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC51288C8D9500592944 /* GFItemInfoView.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3619AC4F288A046100592944 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3619AC51288C8D9500592944 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				3664137B288977B60059C347 /* GFEmptyStateView.swift */,
+				3619AC51288C8D9500592944 /* GFItemInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				366413742887552E0059C347 /* UIHelper.swift in Sources */,
 				366413722886051B0059C347 /* GFAvatarImageView.swift in Sources */,
 				366413802889F97E0059C347 /* GFUserInfoHeaderViewController.swift in Sources */,
+				3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */,
 				3664133A287F576A0059C347 /* AppDelegate.swift in Sources */,
 				36641356288214B20059C347 /* FollowerListViewController.swift in Sources */,
 				36641370288604680059C347 /* FollowerCell.swift in Sources */,
