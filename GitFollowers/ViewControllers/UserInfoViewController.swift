@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol UserInfoViewControllerDelegate: AnyObject {
+  func didTapGitHubProfile(for user: User)
+  func didTapGetFollowers(for user: User)
+}
+
 class UserInfoViewController: UIViewController {
 
   //MARK: - Properties
@@ -28,6 +33,18 @@ class UserInfoViewController: UIViewController {
   }
 
   //MARK: - Methods
+  func configureUIElements(with user: User) {
+    let repoItemVC = GFRepoItemViewController(user: user)
+    repoItemVC.delegate = self
+
+    let followerItemVC = GFFollowerItemViewController(user: user)
+    followerItemVC.delegate = self
+    self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+    self.add(childVC: repoItemVC, to: self.itemViewOne)
+    self.add(childVC: followerItemVC, to: self.itemViewTwo)
+    self.dateLabel.text = "GitHub sinse \(user.createdAt.convertToDisplayFormat())"
+  }
+
   func layoutUI() {
     let padding:CGFloat = 20
     itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
@@ -63,10 +80,7 @@ class UserInfoViewController: UIViewController {
         self.presentGFAlertOnMailThread(title: "Something went wrong with user data!", message: error.rawValue, buttonTitle: "OK")
       case .success(let user):
         DispatchQueue.main.async {
-          self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-          self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
-          self.add(childVC: GFFollowerItemViewController(user: user), to: self.itemViewTwo)
-          self.dateLabel.text = "GitHub sinse \(user.createdAt.convertToDisplayFormat())"
+          self.configureUIElements(with: user)
         }
       }
     }
@@ -88,4 +102,20 @@ class UserInfoViewController: UIViewController {
   @objc func dismissVC() {
     dismiss(animated: true, completion: nil)
   }
+}
+
+//MARK: - UserInfoViewControllerDelegate Protocol
+extension UserInfoViewController: UserInfoViewControllerDelegate {
+  func didTapGitHubProfile(for user: User) {
+    guard let url = URL(string: user.htmlUrl) else {
+      presentGFAlertOnMailThread(title: "Invalid URL", message: "The URL attached to this user is invalid.", buttonTitle: "OK")
+      return
+    }
+    presentSafariVC(with: url)
+  }
+
+  func didTapGetFollowers(for user: User) {
+
+  }
+
 }
