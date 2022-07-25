@@ -16,6 +16,7 @@ class UserInfoViewController: UIViewController {
 
   //MARK: - Properties
   var username: String!
+  weak var delegate: FollowerListViewControllerDelegate!
 
   //MARK: - Subviews
   let headerView = UIView()
@@ -115,7 +116,11 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
   }
 
   func didTapGetFollowers(for user: User) {
-
+    guard user.followers != 0 else {
+      presentGFAlertOnMailThread(title: "No followers!", message: "Thise user has no followers!", buttonTitle: "OK")
+      return
+    }
+    delegate.didRequestFollowers(for: user.login)
+    dismissVC()
   }
-
 }
