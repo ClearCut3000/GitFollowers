@@ -15,6 +15,7 @@
 		3619AC5B288CA38500592944 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC5A288CA38500592944 /* Date+Extension.swift */; };
 		3619AC5D288CA3CE00592944 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC5C288CA3CE00592944 /* String+Extension.swift */; };
 		3619AC5F288E877300592944 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC5E288E877300592944 /* PersistanceManager.swift */; };
+		3619AC61288F3AC800592944 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC60288F3AC800592944 /* FavoriteCell.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		3619AC5A288CA38500592944 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		3619AC5C288CA3CE00592944 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3619AC5E288E877300592944 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		3619AC60288F3AC800592944 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				3664136F288604680059C347 /* FollowerCell.swift */,
+				3619AC60288F3AC800592944 /* FavoriteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				366413802889F97E0059C347 /* GFUserInfoHeaderViewController.swift in Sources */,
 				3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */,
 				3664133A287F576A0059C347 /* AppDelegate.swift in Sources */,
+				3619AC61288F3AC800592944 /* FavoriteCell.swift in Sources */,
 				36641356288214B20059C347 /* FollowerListViewController.swift in Sources */,
 				3619AC5F288E877300592944 /* PersistanceManager.swift in Sources */,
 				36641370288604680059C347 /* FollowerCell.swift in Sources */,
