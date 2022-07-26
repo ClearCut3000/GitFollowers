@@ -22,6 +22,11 @@ class FavoritesListViewController: UIViewController {
     configureTableView()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    getFavorites()
+  }
+
   //MARK: - Methods
   func configureViewController() {
     view.backgroundColor = .systemBackground
