@@ -11,6 +11,7 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
   var isUsernameEntered: Bool { return !userNameTextFielf.text!.isEmpty }
+  var logoImageViewTopConstraint: NSLayoutConstraint!
 
   //MARK: - Subview's
   let logoImageView = UIImageView()
@@ -29,6 +30,7 @@ class SearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    userNameTextFielf.text = ""
     navigationController?.setNavigationBarHidden(true, animated: true)
   }
 
@@ -38,18 +40,21 @@ class SearchViewController: UIViewController {
       presentGFAlertOnMailThread(title: "Empty Username!", message: "Please enter a username. We need to know who to look for.", buttonTitle: "OK")
       return
     }
-    let followerListVC = FollowerListViewController()
-    followerListVC.username = userNameTextFielf.text
-    followerListVC.title = userNameTextFielf.text
+    userNameTextFielf.resignFirstResponder()
+    let followerListVC = FollowerListViewController(username: userNameTextFielf.text!)
     navigationController?.pushViewController(followerListVC, animated: true)
   }
 
   func configureLogoViewView() {
     view.addSubview(logoImageView)
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
-    logoImageView.image = UIImage(named: "gh-logo")
+    logoImageView.image = Images.ghLogo
+
+    let topConnstrainConstant: CGFloat = DeviceType.isiPhoneSE || DeviceType.isiPhone8Zoomed ? 20 : 80
+    logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConnstrainConstant)
+    logoImageViewTopConstraint.isActive = true
+
     NSLayoutConstraint.activate([
-      logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       logoImageView.heightAnchor.constraint(equalToConstant: 200),
       logoImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -79,7 +84,7 @@ class SearchViewController: UIViewController {
   }
   
   func createDismissKeyboardTapGesture() {
-    let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
     view.addGestureRecognizer(tap)
   }
 
