@@ -12,7 +12,7 @@ protocol UserInfoViewControllerDelegate: AnyObject {
   func didTapGetFollowers(for user: User)
 }
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   var username: String!

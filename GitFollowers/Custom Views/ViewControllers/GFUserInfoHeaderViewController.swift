@@ -39,7 +39,7 @@ class GFUserInfoHeaderViewController: UIViewController {
 
   //MARK: - Methods
   func configureUIElements() {
-    avatarImageView.downloadImage(from: user.avatarUrl)
+    downloadImage()
     usernameLabel.text = user.login
     nameLabel.text = user.name ?? ""
     locationLabel.text = user.location ?? ""
@@ -47,6 +47,15 @@ class GFUserInfoHeaderViewController: UIViewController {
     bioLabel.numberOfLines = 3
     locationImageView.image = UIImage(systemName: SFSymbols.location)
     locationImageView.tintColor = .secondaryLabel
+  }
+
+  func downloadImage() {
+    NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+      guard let self = self else { return }
+      DispatchQueue.main.async {
+        self.avatarImageView.image = image
+      }
+    }
   }
 
   func addSubviews() {
