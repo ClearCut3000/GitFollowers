@@ -10,18 +10,19 @@ import UIKit
 class SearchViewController: UIViewController {
 
   //MARK: - Properties
-  var isUsernameEntered: Bool { return !userNameTextFielf.text!.isEmpty }
+  var isUsernameEntered: Bool { return !userNameTextField.text!.isEmpty }
   var logoImageViewTopConstraint: NSLayoutConstraint!
 
   //MARK: - Subview's
   let logoImageView = UIImageView()
-  let userNameTextFielf = GFTextField()
+  let userNameTextField = GFTextField()
   let callToAtionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
   //MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
+    view.addSubviews(logoImageView, userNameTextField, callToAtionButton)
     configureLogoViewView()
     configureTextField()
     configureCallToActionButton()
@@ -30,7 +31,7 @@ class SearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    userNameTextFielf.text = ""
+    userNameTextField.text = ""
     navigationController?.setNavigationBarHidden(true, animated: true)
   }
 
@@ -40,13 +41,12 @@ class SearchViewController: UIViewController {
       presentGFAlertOnMailThread(title: "Empty Username!", message: "Please enter a username. We need to know who to look for.", buttonTitle: "OK")
       return
     }
-    userNameTextFielf.resignFirstResponder()
-    let followerListVC = FollowerListViewController(username: userNameTextFielf.text!)
+    userNameTextField.resignFirstResponder()
+    let followerListVC = FollowerListViewController(username: userNameTextField.text!)
     navigationController?.pushViewController(followerListVC, animated: true)
   }
 
   func configureLogoViewView() {
-    view.addSubview(logoImageView)
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
     logoImageView.image = Images.ghLogo
 
@@ -62,18 +62,16 @@ class SearchViewController: UIViewController {
   }
 
   func configureTextField() {
-    view.addSubview(userNameTextFielf)
-    userNameTextFielf.delegate = self
+    userNameTextField.delegate = self
     NSLayoutConstraint.activate([
-      userNameTextFielf.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
-      userNameTextFielf.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-      userNameTextFielf.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-      userNameTextFielf.heightAnchor.constraint(equalToConstant: 50)
+      userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
+      userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+      userNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+      userNameTextField.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
 
   func configureCallToActionButton() {
-    view.addSubview(callToAtionButton)
     callToAtionButton.addTarget(self, action: #selector(pushFolloverListViewController), for: .touchUpInside)
     NSLayoutConstraint.activate([
       callToAtionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
