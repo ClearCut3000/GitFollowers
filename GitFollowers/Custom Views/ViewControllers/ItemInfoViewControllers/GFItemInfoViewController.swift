@@ -10,7 +10,6 @@ import UIKit
 class GFItemInfoViewController: UIViewController {
 
   var user: User!
-  weak var delegate: UserInfoViewControllerDelegate!
 
   //MARK: - Subviews
   let stackView = UIStackView()

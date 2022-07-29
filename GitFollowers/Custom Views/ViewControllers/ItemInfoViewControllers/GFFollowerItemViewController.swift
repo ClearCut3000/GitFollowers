@@ -7,12 +7,31 @@
 
 import UIKit
 
+protocol GFFollowerItemViewControllerDelegate: AnyObject {
+  func didTapGetFollowers(for user: User)
+}
+
 class GFFollowerItemViewController: GFItemInfoViewController {
 
+  //MARK: - Properties
+  weak var delegate: GFFollowerItemViewControllerDelegate!
+
+  //MARK: - Init's
+  init(user: User, delegate: GFFollowerItemViewControllerDelegate) {
+    super.init(user: user)
+    self.delegate = delegate
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  //MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
   }
 
+  //MARK: - Methods
   private func configureItems() {
     itemInfoViewOne.set(itemInfoType: .followers, withCount: user.followers)
     itemInfoViewTwo.set(itemInfoType: .following, withCount: user.following)

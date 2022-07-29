@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol FollowerListViewControllerDelegate: AnyObject {
-  func didRequestFollowers(for username: String)
-}
-
 class FollowerListViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
@@ -103,10 +99,10 @@ class FollowerListViewController: GFDataLoadingViewController {
   }
 
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
-      cell.set(follower: itemIdentifier)
-      return cell
+    dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+        cell.set(follower: follower)
+        return cell
     })
   }
 
@@ -181,8 +177,8 @@ extension FollowerListViewController: UISearchResultsUpdating {
   }
 }
 
-//MARK: - FollowerListViewControllerDelegate Protocol
-extension FollowerListViewController: FollowerListViewControllerDelegate {
+//MARK: - UserInfoViewControllerDelegate Protocol
+extension FollowerListViewController: UserInfoViewControllerDelegate {
   func didRequestFollowers(for username: String) {
     self.username = username
     title = username

@@ -8,15 +8,14 @@
 import UIKit
 
 protocol UserInfoViewControllerDelegate: AnyObject {
-  func didTapGitHubProfile(for user: User)
-  func didTapGetFollowers(for user: User)
+  func didRequestFollowers(for username: String)
 }
 
 class UserInfoViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   var username: String!
-  weak var delegate: FollowerListViewControllerDelegate!
+  weak var delegate: UserInfoViewControllerDelegate!
 
   //MARK: - Subviews
   let headerView = UIView()
@@ -35,14 +34,9 @@ class UserInfoViewController: GFDataLoadingViewController {
 
   //MARK: - Methods
   func configureUIElements(with user: User) {
-    let repoItemVC = GFRepoItemViewController(user: user)
-    repoItemVC.delegate = self
-
-    let followerItemVC = GFFollowerItemViewController(user: user)
-    followerItemVC.delegate = self
     self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-    self.add(childVC: repoItemVC, to: self.itemViewOne)
-    self.add(childVC: followerItemVC, to: self.itemViewTwo)
+    self.add(childVC: GFRepoItemViewController(user: user, delegate: self), to: self.itemViewOne)
+    self.add(childVC: GFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwo)
     self.dateLabel.text = "GitHub sinse \(user.createdAt.convertToMonthYearFormat())"
   }
 
@@ -105,8 +99,8 @@ class UserInfoViewController: GFDataLoadingViewController {
   }
 }
 
-//MARK: - UserInfoViewControllerDelegate Protocol
-extension UserInfoViewController: UserInfoViewControllerDelegate {
+//MARK: - GFRepoItemViewControllerDelegate Communication Protocol
+extension UserInfoViewController: GFRepoItemViewControllerDelegate {
   func didTapGitHubProfile(for user: User) {
     guard let url = URL(string: user.htmlUrl) else {
       presentGFAlertOnMailThread(title: "Invalid URL", message: "The URL attached to this user is invalid.", buttonTitle: "OK")
@@ -114,7 +108,10 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     }
     presentSafariVC(with: url)
   }
+}
 
+//MARK: - GFFollowerItemViewControllerDelegate Communication Protocol
+extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
   func didTapGetFollowers(for user: User) {
     guard user.followers != 0 else {
       presentGFAlertOnMailThread(title: "No followers!", message: "Thise user has no followers!", buttonTitle: "OK")
@@ -124,3 +121,5 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     dismissVC()
   }
 }
+
+
