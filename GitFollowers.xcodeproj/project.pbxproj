@@ -20,6 +20,7 @@
 		3619AC662891D3DC00592944 /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC652891D3DC00592944 /* GFAlertContainerView.swift */; };
 		3619AC682891E2DB00592944 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */; };
 		3619AC6A28931DF700592944 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6928931DF700592944 /* UIView+Extension.swift */; };
+		3619AC6C2895CEFC00592944 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		3619AC652891D3DC00592944 /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 		3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		3619AC6928931DF700592944 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				3619AC5A288CA38500592944 /* Date+Extension.swift */,
 				3619AC5C288CA3CE00592944 /* String+Extension.swift */,
 				3619AC6928931DF700592944 /* UIView+Extension.swift */,
+				3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				3619AC6A28931DF700592944 /* UIView+Extension.swift in Sources */,
 				3619AC50288A046100592944 /* Constants.swift in Sources */,
 				366413742887552E0059C347 /* UIHelper.swift in Sources */,
+				3619AC6C2895CEFC00592944 /* UITableView+Extension.swift in Sources */,
 				3619AC682891E2DB00592944 /* GFDataLoadingViewController.swift in Sources */,
 				366413722886051B0059C347 /* GFAvatarImageView.swift in Sources */,
 				366413802889F97E0059C347 /* GFUserInfoHeaderViewController.swift in Sources */,

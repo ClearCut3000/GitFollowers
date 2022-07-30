@@ -40,6 +40,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
     tableView.rowHeight = 80
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.removeExcessCells()
     tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
   }
 
@@ -85,11 +86,14 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     guard editingStyle == .delete else { return }
     let favorite = favorites[indexPath.row]
-    favorites.remove(at: indexPath.row)
-    tableView.deleteRows(at: [indexPath], with: .left)
+
     PersistanceManager.update(with: favorite, actionType: .remove) { [weak self] error in
       guard let self = self else { return }
-      guard let error = error else { return }
+      guard let error = error else {
+        self.favorites.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+        return
+      }
       self.presentGFAlertOnMailThread(title: "Unable to delete favorite!", message: error.rawValue, buttonTitle: "OK")
     }
   }

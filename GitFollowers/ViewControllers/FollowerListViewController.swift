@@ -64,7 +64,7 @@ class FollowerListViewController: GFDataLoadingViewController {
   }
 
   func configureCollectionView() {
-    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
+    collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: self.view))
     view.addSubview(collectionView)
     collectionView.delegate = self
     collectionView.backgroundColor = .systemBackground
