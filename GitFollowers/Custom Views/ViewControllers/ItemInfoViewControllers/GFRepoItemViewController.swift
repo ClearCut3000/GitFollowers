@@ -29,6 +29,7 @@ class GFRepoItemViewController: GFItemInfoViewController {
   //MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    configureItems()
   }
   
   //MARK: - Methods

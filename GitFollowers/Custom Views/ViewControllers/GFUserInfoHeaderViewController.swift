@@ -35,15 +35,16 @@ class GFUserInfoHeaderViewController: UIViewController {
       super.viewDidLoad()
       addSubviews()
       layoutUI()
+      configureUIElements()
     }
 
   //MARK: - Methods
   func configureUIElements() {
     downloadImage()
     usernameLabel.text = user.login
-    nameLabel.text = user.name ?? ""
-    locationLabel.text = user.location ?? ""
-    bioLabel.text = user.bio ?? ""
+    nameLabel.text = user.name ?? "Name not received"
+    locationLabel.text = user.location ?? "Location not received"
+    bioLabel.text = user.bio ?? "Bio not received"
     bioLabel.numberOfLines = 3
     locationImageView.image = SFSymbols.location
     locationImageView.tintColor = .secondaryLabel

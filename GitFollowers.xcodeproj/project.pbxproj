@@ -21,7 +21,6 @@
 		3619AC682891E2DB00592944 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */; };
 		3619AC6A28931DF700592944 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6928931DF700592944 /* UIView+Extension.swift */; };
 		3619AC6C2895CEFC00592944 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */; };
-		36402F932897126E0092108E /* UICollectionViewFlowLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36402F922897126E0092108E /* UICollectionViewFlowLayout+Extension.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -63,7 +62,6 @@
 		3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		3619AC6928931DF700592944 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		36402F922897126E0092108E /* UICollectionViewFlowLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Extension.swift"; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				3619AC5C288CA3CE00592944 /* String+Extension.swift */,
 				3619AC6928931DF700592944 /* UIView+Extension.swift */,
 				3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */,
-				36402F922897126E0092108E /* UICollectionViewFlowLayout+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -366,7 +363,6 @@
 			files = (
 				366413672884BFD40059C347 /* User.swift in Sources */,
 				3664135C28836D9F0059C347 /* GFAlertViewController.swift in Sources */,
-				36402F932897126E0092108E /* UICollectionViewFlowLayout+Extension.swift in Sources */,
 				3664137C288977B60059C347 /* GFEmptyStateView.swift in Sources */,
 				3664135E2884B6650059C347 /* UIViewController+Extension.swift in Sources */,
 				3664135028809FC80059C347 /* FavoritesListViewController.swift in Sources */,

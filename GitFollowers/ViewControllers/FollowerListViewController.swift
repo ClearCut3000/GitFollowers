@@ -22,7 +22,7 @@ class FollowerListViewController: GFDataLoadingViewController {
   var isLoadingMoreFollowers = false
 
   //MARK: - Init's
-  init(username:String) {
+  init(username: String) {
     super.init(nibName: nil, bundle: nil)
     self.username = username
     title = username
@@ -99,7 +99,7 @@ class FollowerListViewController: GFDataLoadingViewController {
   }
 
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
         cell.set(follower: follower)
         return cell
@@ -111,7 +111,7 @@ class FollowerListViewController: GFDataLoadingViewController {
     snapshot.appendSections([.main])
     snapshot.appendItems(followers)
     DispatchQueue.main.async {
-      self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+      self.dataSource.apply(snapshot, animatingDifferences: true)
     }
   }
 
@@ -139,7 +139,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 }
 
 //MARK: - CollectionView Delegate Protocol
-extension FollowerListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension FollowerListViewController: UICollectionViewDelegate {
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
