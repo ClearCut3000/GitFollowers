@@ -16,17 +16,15 @@ class GFDataLoadingViewController: UIViewController {
     view.addSubview(containerView)
     containerView.backgroundColor = .systemBackground
     containerView.alpha = 0
-    UIView.animate(withDuration: 0.25) {
-      self.containerView.alpha = 0.8
-      let activityIndicator = UIActivityIndicatorView(style: .large)
-      self.containerView.addSubview(activityIndicator)
-      activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-      NSLayoutConstraint.activate([
-        activityIndicator.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
-        activityIndicator.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor)
-      ])
-      activityIndicator.startAnimating()
-    }
+    UIView.animate(withDuration: 0.25) { self.containerView.alpha = 0.8 }
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+    containerView.addSubview(activityIndicator)
+    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      activityIndicator.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
+      activityIndicator.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor)
+    ])
+    activityIndicator.startAnimating()
   }
 
   func dismissLoadinView() {

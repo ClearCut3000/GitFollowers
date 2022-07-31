@@ -64,7 +64,7 @@ class FollowerListViewController: GFDataLoadingViewController {
   }
 
   func configureCollectionView() {
-    collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: self.view))
+    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
     view.addSubview(collectionView)
     collectionView.delegate = self
     collectionView.backgroundColor = .systemBackground
@@ -139,7 +139,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 }
 
 //MARK: - CollectionView Delegate Protocol
-extension FollowerListViewController: UICollectionViewDelegate {
+extension FollowerListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
@@ -160,6 +160,8 @@ extension FollowerListViewController: UICollectionViewDelegate {
     let navigationController = UINavigationController(rootViewController: destinationVC)
     present(navigationController, animated: true, completion: nil)
   }
+
+
 }
 
 //MARK: - Search Protocol
