@@ -99,5 +99,4 @@ class GFUserInfoHeaderViewController: UIViewController {
       bioLabel.heightAnchor.constraint(equalToConstant: 90)
     ])
   }
-
 }

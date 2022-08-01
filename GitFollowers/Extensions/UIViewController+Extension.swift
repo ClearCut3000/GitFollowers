@@ -9,7 +9,8 @@ import UIKit
 import SafariServices
 
 extension UIViewController {
-
+  
+  /// Presents Alert ViewControllers derectly on main thread
   func presentGFAlertOnMailThread(title: String, message: String, buttonTitle: String) {
     DispatchQueue.main.async {
       let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
@@ -18,7 +19,8 @@ extension UIViewController {
       self.present(alertVC, animated: true)
     }
   }
-
+  
+  /// Presents safaru view controller 
   func presentSafariVC(with url: URL) {
     let safariVC = SFSafariViewController(url: url)
     safariVC.preferredControlTintColor = .systemGreen
