@@ -79,18 +79,7 @@ class FollowerListViewController: GFDataLoadingViewController {
       self.dismissLoadinView()
       switch result {
       case .success(let followers):
-        if followers.count < 100 {
-          self.hasMoreFollowers = false
-        }
-        self.followers.append(contentsOf: followers)
-        if self.followers.isEmpty {
-          let message = "This user doesn't have any followrs. Go follow them!"
-          DispatchQueue.main.async {
-            self.showEmptyStateView(with: message, in: self.view)
-            return
-          }
-        }
-        self.updateData(on: self.followers)
+        self.updateUI(with: followers)
       case .failure(let error):
         self.presentGFAlertOnMailThread(title: "Bad stuff Happened", message: error.rawValue, buttonTitle: "OK")
       }
@@ -98,11 +87,26 @@ class FollowerListViewController: GFDataLoadingViewController {
     }
   }
 
+  func updateUI(with followers: [Follower]) {
+    if followers.count < 100 {
+      self.hasMoreFollowers = false
+    }
+    self.followers.append(contentsOf: followers)
+    if self.followers.isEmpty {
+      let message = "This user doesn't have any followrs. Go follow them!"
+      DispatchQueue.main.async {
+        self.showEmptyStateView(with: message, in: self.view)
+        return
+      }
+    }
+    self.updateData(on: self.followers)
+  }
+
   func configureDataSource() {
     dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
-        cell.set(follower: follower)
-        return cell
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+      cell.set(follower: follower)
+      return cell
     })
   }
 
@@ -122,18 +126,22 @@ class FollowerListViewController: GFDataLoadingViewController {
       self.dismissLoadinView()
       switch result {
       case .success(let user):
-        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-        PersistanceManager.update(with: favorite, actionType: .add) { [weak self] error in
-          guard let self = self else { return }
-          guard let error = error else {
-            self.presentGFAlertOnMailThread(title: "Success!", message: "You have succesfully fovorited this user!", buttonTitle: "OK")
-            return
-          }
-          self.presentGFAlertOnMailThread(title: "Something went wrong>.", message: error.rawValue, buttonTitle: "OK")
-        }
+        self.addUserToFavorites(user: user)
       case .failure(let error):
         self.presentGFAlertOnMailThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
       }
+    }
+  }
+
+  func addUserToFavorites(user: User) {
+    let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+    PersistanceManager.update(with: favorite, actionType: .add) { [weak self] error in
+      guard let self = self else { return }
+      guard let error = error else {
+        self.presentGFAlertOnMailThread(title: "Success!", message: "You have succesfully fovorited this user!", buttonTitle: "OK")
+        return
+      }
+      self.presentGFAlertOnMailThread(title: "Something went wrong>.", message: error.rawValue, buttonTitle: "OK")
     }
   }
 }
@@ -160,8 +168,6 @@ extension FollowerListViewController: UICollectionViewDelegate {
     let navigationController = UINavigationController(rootViewController: destinationVC)
     present(navigationController, animated: true, completion: nil)
   }
-
-
 }
 
 //MARK: - Search Protocol

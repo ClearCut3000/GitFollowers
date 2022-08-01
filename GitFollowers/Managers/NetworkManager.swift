@@ -8,14 +8,14 @@
 import UIKit
 
 class NetworkManager {
-
+  
   //MARK: - Properties
   static let shared = NetworkManager()
   let cache = NSCache<NSString, UIImage>()
   private let baseURL = "https://api.github.com/users/"
-
+  
   private init() {}
-
+  
   //MARK: - Methods
   ///  Async method for loading all followers models for current user
   func getFollowers(for username: String, page: Int, completion: @escaping (Result<[Follower], GFError>) -> Void) {
@@ -48,8 +48,8 @@ class NetworkManager {
     }
     task.resume()
   }
-
-  /// Async 
+  
+  /// Async method for loading current user info from GitHub
   func getUserInfo(for username: String, completion: @escaping (Result<User, GFError>) -> Void) {
     let endpoint = baseURL + "\(username)"
     guard let url = URL(string: endpoint) else {
@@ -81,7 +81,8 @@ class NetworkManager {
     }
     task.resume()
   }
-
+  
+  /// Async method for loading and caching user avatar image
   func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
     let cacheKey = NSString(string: urlString)
     if let image = cache.object(forKey: cacheKey) {

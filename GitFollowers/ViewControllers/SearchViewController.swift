@@ -11,7 +11,6 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
   var isUsernameEntered: Bool { return !userNameTextField.text!.isEmpty }
-  var logoImageViewTopConstraint: NSLayoutConstraint!
 
   //MARK: - Subview's
   let logoImageView = UIImageView()
@@ -51,10 +50,9 @@ class SearchViewController: UIViewController {
     logoImageView.image = Images.ghLogo
 
     let topConnstrainConstant: CGFloat = DeviceType.isiPhoneSE || DeviceType.isiPhone8Zoomed ? 20 : 80
-    logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConnstrainConstant)
-    logoImageViewTopConstraint.isActive = true
 
     NSLayoutConstraint.activate([
+      logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConnstrainConstant),
       logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       logoImageView.heightAnchor.constraint(equalToConstant: 200),
       logoImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -85,7 +83,6 @@ class SearchViewController: UIViewController {
     let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
     view.addGestureRecognizer(tap)
   }
-
 }
 
 //MARK: - TextFieldDelegate Protocol Extension

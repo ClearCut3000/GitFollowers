@@ -31,16 +31,16 @@ class GFUserInfoHeaderViewController: UIViewController {
   }
 
   //MARK: - View Lifecycle
-    override func viewDidLoad() {
-      super.viewDidLoad()
-      addSubviews()
-      layoutUI()
-      configureUIElements()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationLabel, locationImageView, bioLabel)
+    layoutUI()
+    configureUIElements()
+  }
 
   //MARK: - Methods
   func configureUIElements() {
-    downloadImage()
+    avatarImageView.downloadImage(fromURL: user.avatarUrl)
     usernameLabel.text = user.login
     nameLabel.text = user.name ?? "Name not received"
     locationLabel.text = user.location ?? "Location not received"
@@ -48,19 +48,6 @@ class GFUserInfoHeaderViewController: UIViewController {
     bioLabel.numberOfLines = 3
     locationImageView.image = SFSymbols.location
     locationImageView.tintColor = .secondaryLabel
-  }
-
-  func downloadImage() {
-    NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
-      guard let self = self else { return }
-      DispatchQueue.main.async {
-        self.avatarImageView.image = image
-      }
-    }
-  }
-
-  func addSubviews() {
-    view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationLabel, locationImageView, bioLabel)
   }
   
   func layoutUI() {

@@ -29,29 +29,23 @@ class FollowerCell: UICollectionViewCell {
   //MARK: - Methods
   func set(follower: Follower) {
     usernameLabel.text = follower.login
-    NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] image in
-        guard let self = self else { return }
-
-        DispatchQueue.main.async {
-            self.avatarImageView.image = image
-        }
-    }
+    avatarImageView.downloadImage(fromURL: follower.avatarUrl)
   }
-
+  
   private func configure() {
     addSubviews(avatarImageView, usernameLabel)
     let padding: CGFloat = 8
     
     NSLayoutConstraint.activate([
-        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-        avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-        avatarImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
+      avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+      avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+      avatarImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
 
-        usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
-        usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-        usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-        usernameLabel.heightAnchor.constraint(equalToConstant: 20)
+      usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+      usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+      usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      usernameLabel.heightAnchor.constraint(equalToConstant: 20)
     ])
   }
 }
