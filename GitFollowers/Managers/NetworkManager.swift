@@ -48,6 +48,37 @@ class NetworkManager {
     }
     task.resume()
   }
+
+  func getRepos(for username: String, completion: @escaping (Result<[Repo], GFError>) -> Void) {
+    let endpoint = baseURL + "\(username)/repos"
+    guard let url = URL(string: endpoint) else {
+      completion(.failure(.invalidUsername))
+      return
+    }
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+      if let _ = error {
+        completion(.failure(.unableToComplete))
+        return
+      }
+      guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        completion(.failure(.invalidResponse))
+        return
+      }
+      guard let data = data else {
+        completion(.failure(.invalidData))
+        return
+      }
+      do {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let repos = try decoder.decode([Repo].self, from: data)
+        completion(.success(repos))
+      } catch {
+        completion(.failure(.invalidData))
+      }
+    }
+    task.resume()
+  }
   
   /// Async method for loading current user info from GitHub
   func getUserInfo(for username: String, completion: @escaping (Result<User, GFError>) -> Void) {

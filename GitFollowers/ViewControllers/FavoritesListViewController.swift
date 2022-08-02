@@ -45,7 +45,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
   }
 
   func getFavorites() {
-    PersistanceManager.retriveFaworites { [weak self] result in
+    PersistanceManager.retriveFavorites { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let favorites):

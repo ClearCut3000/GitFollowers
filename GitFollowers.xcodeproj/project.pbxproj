@@ -21,6 +21,8 @@
 		3619AC682891E2DB00592944 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */; };
 		3619AC6A28931DF700592944 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6928931DF700592944 /* UIView+Extension.swift */; };
 		3619AC6C2895CEFC00592944 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */; };
+		36402F952899A6F90092108E /* ReposListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36402F942899A6F90092108E /* ReposListViewController.swift */; };
+		36402F972899A99E0092108E /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36402F962899A99E0092108E /* Repo.swift */; };
 		3664133A287F576A0059C347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36641339287F576A0059C347 /* AppDelegate.swift */; };
 		3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664133B287F576A0059C347 /* SceneDelegate.swift */; };
 		36641343287F57720059C347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36641342287F57720059C347 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		3619AC672891E2DB00592944 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		3619AC6928931DF700592944 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3619AC6B2895CEFC00592944 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		36402F942899A6F90092108E /* ReposListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListViewController.swift; sourceTree = "<group>"; };
+		36402F962899A99E0092108E /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		36641336287F576A0059C347 /* GitFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36641339287F576A0059C347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3664133B287F576A0059C347 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				3664134D28809F890059C347 /* SearchViewController.swift */,
 				36641355288214B20059C347 /* FollowerListViewController.swift */,
 				3664137D2889BD8D0059C347 /* UserInfoViewController.swift */,
+				36402F942899A6F90092108E /* ReposListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			children = (
 				366413642884BF0C0059C347 /* Follower.swift */,
 				366413662884BFD40059C347 /* User.swift */,
+				36402F962899A99E0092108E /* Repo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				366413802889F97E0059C347 /* GFUserInfoHeaderViewController.swift in Sources */,
 				3619AC52288C8D9500592944 /* GFItemInfoView.swift in Sources */,
 				3664133A287F576A0059C347 /* AppDelegate.swift in Sources */,
+				36402F952899A6F90092108E /* ReposListViewController.swift in Sources */,
 				3619AC61288F3AC800592944 /* FavoriteCell.swift in Sources */,
 				36641356288214B20059C347 /* FollowerListViewController.swift in Sources */,
 				3619AC642890910100592944 /* GFTabBarController.swift in Sources */,
@@ -397,6 +404,7 @@
 				3664133C287F576A0059C347 /* SceneDelegate.swift in Sources */,
 				3619AC5D288CA3CE00592944 /* String+Extension.swift in Sources */,
 				366413542881AD840059C347 /* GFTextField.swift in Sources */,
+				36402F972899A99E0092108E /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

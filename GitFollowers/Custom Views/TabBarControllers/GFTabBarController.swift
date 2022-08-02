@@ -13,7 +13,7 @@ class GFTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     UITabBar.appearance().tintColor = .systemGreen
-    viewControllers = [createSearchNavigationController(), createFavoritesNavigationController()]
+    viewControllers = [createSearchNavigationController(), createFavoritesNavigationController(), createReposListViewController()]
   }
   
   //MARK: - Methods
@@ -30,5 +30,11 @@ class GFTabBarController: UITabBarController {
     favoritesListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
     return UINavigationController(rootViewController: favoritesListViewController)
   }
-  
+
+  func createReposListViewController() -> UINavigationController {
+    let reposListViewController = ReposListViewController()
+    reposListViewController.title = "Repositories"
+    reposListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks , tag: 2)
+    return UINavigationController(rootViewController: reposListViewController)
+  }
 }

@@ -197,3 +197,9 @@ extension FollowerListViewController: UserInfoViewControllerDelegate {
     getFollowers(username: username, page: page)
   }
 }
+
+extension FollowerListViewController: ReposListViewControllerDelegate {
+  func didRequestRepos(for username: String) {
+    self.username = username
+  }
+}
