@@ -20,7 +20,7 @@ extension UIViewController {
     }
   }
   
-  /// Presents safaru view controller 
+  /// Presents safari view controller 
   func presentSafariVC(with url: URL) {
     let safariVC = SFSafariViewController(url: url)
     safariVC.preferredControlTintColor = .systemGreen

@@ -39,22 +39,7 @@ class RepoCell: UICollectionViewCell {
   }
 
   private func configure() {
-    contentView.backgroundColor = .tertiarySystemBackground
-    contentView.layer.cornerRadius = 10
-    contentView.layer.borderWidth = 2
-    contentView.layer.borderColor = UIColor.white.cgColor
-
-    starImageView.image = SFSymbols.stars
-    starImageView.translatesAutoresizingMaskIntoConstraints = false
-    starImageView.contentMode = .scaleAspectFit
-    starImageView.tintColor = .label
-
-    forksImageView.image = SFSymbols.forks
-    forksImageView.translatesAutoresizingMaskIntoConstraints = false
-    forksImageView.contentMode = .scaleAspectFit
-    forksImageView.tintColor = .label
-
-    descriptionLabel.numberOfLines = 2
+    configureUIElements()
 
     addSubviews(nameLabel, descriptionLabel, starsCountLabel, forksCountLabel, forksImageView, starImageView)
     let padding: CGFloat = 8
@@ -90,6 +75,25 @@ class RepoCell: UICollectionViewCell {
       forksCountLabel.heightAnchor.constraint(equalToConstant: 20),
       forksCountLabel.widthAnchor.constraint(equalToConstant: 60),
     ])
+  }
+
+  private func configureUIElements() {
+    contentView.backgroundColor = .tertiarySystemBackground
+    contentView.layer.cornerRadius = 10
+    contentView.layer.borderWidth = 2
+    contentView.layer.borderColor = UIColor.secondarySystemBackground.cgColor
+
+    starImageView.image = SFSymbols.stars
+    starImageView.translatesAutoresizingMaskIntoConstraints = false
+    starImageView.contentMode = .scaleAspectFit
+    starImageView.tintColor = .label
+
+    forksImageView.image = SFSymbols.forks
+    forksImageView.translatesAutoresizingMaskIntoConstraints = false
+    forksImageView.contentMode = .scaleAspectFit
+    forksImageView.tintColor = .label
+
+    descriptionLabel.numberOfLines = 2
   }
 }
 

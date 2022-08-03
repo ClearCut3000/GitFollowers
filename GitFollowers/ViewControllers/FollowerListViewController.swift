@@ -11,11 +11,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   enum Section { case main }
-  var username: String! {
-    didSet {
-      print("Set new username")
-    }
-  }
+  var username: String!
   var followers: [Follower] = []
   var filteredFollowers: [Follower] = []
   var page = 1

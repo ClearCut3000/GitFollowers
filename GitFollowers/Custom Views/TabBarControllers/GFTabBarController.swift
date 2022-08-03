@@ -34,7 +34,7 @@ class GFTabBarController: UITabBarController {
   func createReposListViewController() -> UINavigationController {
     let reposListViewController = ReposListViewController()
     reposListViewController.title = "Repositories"
-    reposListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks , tag: 2)
+    reposListViewController.tabBarItem = UITabBarItem(title: "Repositories", image: SFSymbols.repo, tag: 2)
     return UINavigationController(rootViewController: reposListViewController)
   }
 }

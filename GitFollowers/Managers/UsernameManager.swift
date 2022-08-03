@@ -9,6 +9,6 @@ import Foundation
 
 class Username {
   static let shared = Username()
-  var username: String = ""
+  var username: String? = nil
   private init() {}
 }

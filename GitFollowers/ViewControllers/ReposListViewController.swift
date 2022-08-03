@@ -18,14 +18,13 @@ class ReposListViewController: GFDataLoadingViewController {
   //MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
     configureViewController()
     configureCollectionView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    getRepos(for: Username.shared.username)
+    checkIsUsernameEntered()
   }
 
   //MARK: - Methods
@@ -43,15 +42,24 @@ class ReposListViewController: GFDataLoadingViewController {
     collectionView.register(RepoCell.self, forCellWithReuseIdentifier: RepoCell.reuseID)
   }
 
+  func checkIsUsernameEntered() {
+    guard let username = Username.shared.username else {
+      self.showEmptyStateView(with: "No username entered", in: self.view)
+      return
+    }
+    getRepos(for: username)
+    self.view.bringSubviewToFront(collectionView)
+  }
+
   func getRepos(for username: String) {
     showLoadingView()
     NetworkManager.shared.getRepos(for: username) { [weak self] result in
       guard let self = self else { return }
-      self.dismissLoadinView()
       switch result {
       case .success(let repos):
         self.repos = repos
         DispatchQueue.main.async {
+          self.dismissLoadinView()
           self.collectionView.reloadData()
         }
       case .failure(let error):

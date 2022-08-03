@@ -15,6 +15,7 @@ enum SFSymbols {
   static let following = UIImage(systemName:"person.2")
   static let stars = UIImage(systemName: "star.fill")
   static let forks = UIImage(systemName: "shuffle")
+  static let repo = UIImage(systemName: "server.rack")
 }
 
 enum Images {
