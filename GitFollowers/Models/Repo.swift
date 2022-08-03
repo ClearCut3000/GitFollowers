@@ -9,6 +9,8 @@ import Foundation
 
 struct Repo: Codable {
   let name: String
-  var desription: String?
+  var description: String?
   let htmlUrl: String
+  let stargazersCount: Int
+  let forksCount: Int
 }

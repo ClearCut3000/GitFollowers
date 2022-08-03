@@ -11,7 +11,11 @@ class FollowerListViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   enum Section { case main }
-  var username: String!
+  var username: String! {
+    didSet {
+      print("Set new username")
+    }
+  }
   var followers: [Follower] = []
   var filteredFollowers: [Follower] = []
   var page = 1
@@ -73,6 +77,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 
   func getFollowers(username: String, page: Int) {
     showLoadingView()
+    Username.shared.username = username
     isLoadingMoreFollowers = true
     NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
       guard let self = self else { return }
@@ -195,11 +200,5 @@ extension FollowerListViewController: UserInfoViewControllerDelegate {
     filteredFollowers.removeAll()
     collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
     getFollowers(username: username, page: page)
-  }
-}
-
-extension FollowerListViewController: ReposListViewControllerDelegate {
-  func didRequestRepos(for username: String) {
-    self.username = username
   }
 }

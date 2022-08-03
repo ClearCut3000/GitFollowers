@@ -50,7 +50,7 @@ class NetworkManager {
   }
 
   func getRepos(for username: String, completion: @escaping (Result<[Repo], GFError>) -> Void) {
-    let endpoint = baseURL + "\(username)/repos"
+    let endpoint = baseURL + "\(username)/repos?per_page=200"
     guard let url = URL(string: endpoint) else {
       completion(.failure(.invalidUsername))
       return
