@@ -49,8 +49,9 @@ class NetworkManager {
     task.resume()
   }
 
-  func getRepos(for username: String, completion: @escaping (Result<[Repo], GFError>) -> Void) {
-    let endpoint = baseURL + "\(username)/repos?per_page=200"
+  /// Async method for loading all repo models for current user
+  func getRepos(for username: String, page: Int, completion: @escaping (Result<[Repo], GFError>) -> Void) {
+    let endpoint = baseURL + "\(username)/repos?per_page=10&page=\(page)"
     guard let url = URL(string: endpoint) else {
       completion(.failure(.invalidUsername))
       return

@@ -11,6 +11,9 @@ class ReposListViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   var repos: [Repo] = []
+  var page: Int = 1
+  var hasMoreRepos = true
+  var isLoadingMoreRepos = false
 
   //MARK: - Subviews
   var collectionView: UICollectionView!
@@ -47,24 +50,40 @@ class ReposListViewController: GFDataLoadingViewController {
       self.showEmptyStateView(with: "No username entered", in: self.view)
       return
     }
-    getRepos(for: username)
+    getRepos(for: username, page: page)
     self.view.bringSubviewToFront(collectionView)
   }
 
-  func getRepos(for username: String) {
+  func getRepos(for username: String, page: Int) {
     showLoadingView()
-    NetworkManager.shared.getRepos(for: username) { [weak self] result in
+    isLoadingMoreRepos = true
+    NetworkManager.shared.getRepos(for: username, page: page) { [weak self] result in
       guard let self = self else { return }
+      self.dismissLoadinView()
       switch result {
       case .success(let repos):
-        self.repos = repos
-        DispatchQueue.main.async {
-          self.dismissLoadinView()
-          self.collectionView.reloadData()
-        }
+        self.updateUI(with: repos)
       case .failure(let error):
         self.presentGFAlertOnMailThread(title: "Bad stuff Happened", message: error.rawValue, buttonTitle: "OK")
       }
+      self.isLoadingMoreRepos = false
+    }
+  }
+
+  func updateUI(with repos: [Repo]) {
+    if repos.count < 10 {
+      self.hasMoreRepos = false
+    }
+    self.repos.append(contentsOf: repos)
+    if self.repos.isEmpty {
+      let message = "This user doesn't have any repositories. So sad!"
+      DispatchQueue.main.async {
+        self.showEmptyStateView(with: message, in: self.view)
+        return
+      }
+    }
+    DispatchQueue.main.async {
+      self.collectionView.reloadData()
     }
   }
 }
@@ -89,5 +108,17 @@ extension ReposListViewController: UICollectionViewDelegate, UICollectionViewDat
       return
     }
     presentSafariVC(with: url)
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let offsetY = scrollView.contentOffset.y
+    let contentHeight = scrollView.contentSize.height
+    let height = scrollView.frame.size.height
+    if offsetY > contentHeight - height {
+      guard hasMoreRepos, !isLoadingMoreRepos else { return }
+      page += 1
+      guard let username = Username.shared.username else { return }
+      getRepos(for: username, page: page)
+    }
   }
 }

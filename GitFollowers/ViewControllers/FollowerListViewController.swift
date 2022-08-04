@@ -73,7 +73,6 @@ class FollowerListViewController: GFDataLoadingViewController {
 
   func getFollowers(username: String, page: Int) {
     showLoadingView()
-    Username.shared.username = username
     isLoadingMoreFollowers = true
     NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
       guard let self = self else { return }
@@ -81,6 +80,7 @@ class FollowerListViewController: GFDataLoadingViewController {
       switch result {
       case .success(let followers):
         self.updateUI(with: followers)
+        Username.shared.username = username
       case .failure(let error):
         self.presentGFAlertOnMailThread(title: "Bad stuff Happened", message: error.rawValue, buttonTitle: "OK")
       }
