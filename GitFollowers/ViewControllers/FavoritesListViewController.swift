@@ -32,6 +32,25 @@ class FavoritesListViewController: GFDataLoadingViewController {
     view.backgroundColor = .systemBackground
     title = "Favorites"
     navigationController?.navigationBar.prefersLargeTitles = true
+    let clearButton = UIBarButtonItem(image: UIImage(systemName: "trash"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(clearFavorites))
+    navigationItem.rightBarButtonItem = clearButton
+  }
+
+  @objc func clearFavorites() {
+    PersistanceManager.clearAll { [weak self] error in
+      guard let self = self else { return }
+      guard let error = error else {
+        self.favorites.removeAll()
+        self.tableView.reloadData()
+        return
+      }
+      self.presentGFAlertOnMailThread(title: "Unable to delete favorite!",
+                                      message: error.rawValue,
+                                      buttonTitle: "OK")
+    }
   }
 
   func configureTableView() {
@@ -51,7 +70,9 @@ class FavoritesListViewController: GFDataLoadingViewController {
       case .success(let favorites):
         self.updateUI(with: favorites)
       case .failure(let error):
-        self.presentGFAlertOnMailThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+        self.presentGFAlertOnMailThread(title: "Something went wrong",
+                                        message: error.rawValue,
+                                        buttonTitle: "OK")
       }
     }
   }

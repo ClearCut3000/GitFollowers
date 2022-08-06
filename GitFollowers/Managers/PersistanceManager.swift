@@ -40,6 +40,18 @@ enum PersistanceManager {
     }
   }
 
+  static func clearAll(completion: @escaping (GFError?) -> Void) {
+    retriveFavorites { result in
+      switch result {
+      case .success(var favorites):
+        favorites.removeAll()
+        completion(save(favorites: favorites))
+      case .failure(let error):
+        completion(error)
+      }
+    }
+  }
+
   static func retriveFavorites(completion: @escaping (Result<[Follower], GFError>) -> Void) {
     guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
       completion(.success([]))
