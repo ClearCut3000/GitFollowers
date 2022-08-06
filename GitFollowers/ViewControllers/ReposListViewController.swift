@@ -14,6 +14,7 @@ class ReposListViewController: GFDataLoadingViewController {
   var page: Int = 1
   var hasMoreRepos = true
   var isLoadingMoreRepos = false
+  var username: String = ""
 
   //MARK: - Subviews
   var collectionView: UICollectionView!
@@ -27,7 +28,7 @@ class ReposListViewController: GFDataLoadingViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    checkIsUsernameEntered()
+    usernameCheck()
   }
 
   //MARK: - Methods
@@ -45,13 +46,20 @@ class ReposListViewController: GFDataLoadingViewController {
     collectionView.register(RepoCell.self, forCellWithReuseIdentifier: RepoCell.reuseID)
   }
 
-  func checkIsUsernameEntered() {
-    guard let username = Username.shared.username else {
+  func usernameCheck() {
+    guard Username.shared.username != nil else {
       self.showEmptyStateView(with: "No username entered", in: self.view)
       return
     }
-    getRepos(for: username, page: page)
-    self.view.bringSubviewToFront(collectionView)
+    if username != Username.shared.username {
+      username = Username.shared.username!
+      self.repos.removeAll()
+      DispatchQueue.main.async {
+        self.collectionView.reloadData()
+      }
+      getRepos(for: username, page: page)
+      self.view.bringSubviewToFront(collectionView)
+    }
   }
 
   func getRepos(for username: String, page: Int) {
