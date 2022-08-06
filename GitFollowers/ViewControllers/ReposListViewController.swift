@@ -11,10 +11,12 @@ class ReposListViewController: GFDataLoadingViewController {
 
   //MARK: - Properties
   var repos: [Repo] = []
+  var filteredRepos: [Repo] = []
   var page: Int = 1
   var hasMoreRepos = true
   var isLoadingMoreRepos = false
   var username: String = ""
+  var isSearching = false
 
   //MARK: - Subviews
   var collectionView: UICollectionView!
@@ -23,6 +25,7 @@ class ReposListViewController: GFDataLoadingViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureViewController()
+    configureSearchController()
     configureCollectionView()
   }
 
@@ -35,6 +38,14 @@ class ReposListViewController: GFDataLoadingViewController {
   func configureViewController() {
     view.backgroundColor = .systemBackground
     navigationController?.navigationBar.prefersLargeTitles = true
+  }
+
+  func configureSearchController() {
+    let searchController = UISearchController()
+    searchController.searchResultsUpdater = self
+    searchController.searchBar.placeholder = "Search for a username..."
+    searchController.obscuresBackgroundDuringPresentation = false
+    navigationItem.searchController = searchController
   }
 
   func configureCollectionView() {
@@ -94,6 +105,22 @@ class ReposListViewController: GFDataLoadingViewController {
       self.collectionView.reloadData()
     }
   }
+}
+
+//MARK: - Search Protocol
+extension ReposListViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+      
+      isSearching = false
+      return
+    }
+    isSearching = true
+    filteredRepos = repos.filter { $0.name.lowercased().contains(filter.lowercased()) }
+  }
+
+
+
 }
 
 //MARK: - UICollectionViewDelegate Protocol
