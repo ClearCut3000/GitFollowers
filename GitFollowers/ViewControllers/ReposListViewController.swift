@@ -43,7 +43,8 @@ class ReposListViewController: GFDataLoadingViewController {
   func configureSearchController() {
     let searchController = UISearchController()
     searchController.searchResultsUpdater = self
-    searchController.searchBar.placeholder = "Search for a username..."
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "Search for a repository..."
     searchController.obscuresBackgroundDuringPresentation = false
     navigationItem.searchController = searchController
   }
@@ -65,9 +66,7 @@ class ReposListViewController: GFDataLoadingViewController {
     if username != Username.shared.username {
       username = Username.shared.username!
       self.repos.removeAll()
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
+      self.collectionView.reloadDataOnMainThread()
       getRepos(for: username, page: page)
       self.view.bringSubviewToFront(collectionView)
     }
@@ -90,7 +89,7 @@ class ReposListViewController: GFDataLoadingViewController {
   }
 
   func updateUI(with repos: [Repo]) {
-    if repos.count < 10 {
+    if repos.count < 100 {
       self.hasMoreRepos = false
     }
     self.repos.append(contentsOf: repos)
@@ -101,37 +100,37 @@ class ReposListViewController: GFDataLoadingViewController {
         return
       }
     }
-    DispatchQueue.main.async {
-      self.collectionView.reloadData()
-    }
+    collectionView.reloadDataOnMainThread()
   }
 }
 
-//MARK: - Search Protocol
-extension ReposListViewController: UISearchResultsUpdating {
+//MARK: - Search Protocol's
+extension ReposListViewController: UISearchResultsUpdating, UISearchBarDelegate {
   func updateSearchResults(for searchController: UISearchController) {
     guard let filter = searchController.searchBar.text, !filter.isEmpty else {
-      
       isSearching = false
       return
     }
     isSearching = true
     filteredRepos = repos.filter { $0.name.lowercased().contains(filter.lowercased()) }
+    collectionView.reloadDataOnMainThread()
   }
 
-
-
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    isSearching = false
+    collectionView.reloadDataOnMainThread()
+  }
 }
 
 //MARK: - UICollectionViewDelegate Protocol
 extension ReposListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return repos.count
+    return isSearching ? filteredRepos.count : repos.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RepoCell.reuseID, for: indexPath) as! RepoCell
-    let repo = repos[indexPath.row]
+    let repo = isSearching ? filteredRepos[indexPath.row] : repos[indexPath.row]
     cell.set(repo: repo)
     return cell
   }
